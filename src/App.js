@@ -4,6 +4,8 @@ import Shop from './pages/shop/shop.components'
 import Header from './components/header/header.component'
 import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import { Route, Routes } from 'react-router-dom';
+import {auth} from './firebase/firebase.utils'
+import { onAuthStateChanged } from 'firebase/auth';
 
 
 
@@ -19,18 +21,32 @@ class App extends React.Component {
     }
     
   }
+
+  unsubscribe = null;
+
+  componentDidMount() {
+    this.unsubscribe = onAuthStateChanged(auth, user =>{
+      this.setState({currentUser : user})
+    console.log(user);
+    })
+  }
+
+  componentWillUnmount () {
+    this.unsubscribe();
+  }
   
   
   render() {
     return (
-      <Routes>
-        <Route element = {<Header/>}>
+      <React.Fragment>
+        <Header currentUser = {this.state.currentUser} />
+        <Routes>
           <Route path = '/' element =     {<HomePage/>} />
           <Route path = '/shop' element = {<Shop/>} />
           <Route path = '/sign-in' element = {<SignInAndSignUp/>} />
-
-        </Route>
       </Routes>
+      </React.Fragment>
+      
       
     );
   }
