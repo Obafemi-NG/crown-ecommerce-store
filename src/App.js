@@ -6,11 +6,12 @@ import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.com
 import { Route, Routes } from 'react-router-dom';
 import {auth} from './firebase/firebase.utils'
 import { onAuthStateChanged } from 'firebase/auth';
-
-
+import { createUserProfileDocument } from './firebase/firebase.utils';
+import firestore from './firebase/firebase.utils'
 
 
 import './App.css';
+import { collection, onSnapshot } from 'firebase/firestore';
 
 class App extends React.Component {
   constructor (props) {
@@ -25,9 +26,18 @@ class App extends React.Component {
   unsubscribe = null;
 
   componentDidMount() {
-    this.unsubscribe = onAuthStateChanged(auth, user =>{
-      this.setState({currentUser : user})
-    console.log(user);
+    this.unsubscribe = onAuthStateChanged( auth, async userAuth =>{
+      if (userAuth) {
+        await createUserProfileDocument(userAuth); 
+        onSnapshot(collection(firestore, 'users'), (snapshot) => {
+          this.setState({currentUser : snapshot.docs.map((doc) => doc.data())}, () => {
+            console.log(this.state)
+          })
+        });
+        
+      }
+      this.setState({currentUser : userAuth})
+      
     })
   }
 

@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import {getFirestore} from 'firebase/firestore';
+import {getFirestore, getDoc, doc, setDoc } from 'firebase/firestore';
 import {getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
 
 const config = {
@@ -15,9 +15,53 @@ const config = {
 const firebaseApp = initializeApp(config);
 
 
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+    if (!userAuth) return;
 
+    // onSnapshot(collection(firestore, 'users') , (snapshot) => {
+    //     console.log(snapshot.docs)
+    // })
+    // const collectionRef = collection(firestore, 'users');
+    // const payload = {name : 'joshua', nickname : 'viper'}
+    // await addDoc(collectionRef, payload);
+    
+    const userRef = doc(firestore, `users/${userAuth.id}`); 
+    const snapshot = await getDoc(userRef);
+    // console.log(snapshot);
+    if (!snapshot.exists()) {
+        const {displayName, email} = userAuth;
+        const createdAt = new Date();
+        const collectionRef = doc(firestore, 'users', `${userAuth.uid}`)
+        const payload = {displayName, email, createdAt};
+        try {
+            await setDoc(collectionRef, payload);
+            // console.log(`New Document with ${docRef.id} successfully added` )
+        } catch (error) {
+            console.log(`error adding user: ${error}`)
+        }
+    }
+
+    // return userRef;
+
+    // if(!Snapshot.exists()){
+    //     const {displayName , email} = userAuth;
+    //     const createdAt = new Date();
+    //     // console.log(`Document Data: ${snapShot.data()}`)
+    //     try {
+    //         const docRef = await addDoc(userRef, {
+    //             displayName,
+    //             email,
+    //             createdAt,
+    //             ...additionalData
+    //         });
+            // console.log(`Document successfully created with ID: ${docRef.id} `)
+    //     } catch(error) {
+    //         console.log(`Error adding document: ${error} `)
+    //     }
+    // }
+}
 export const auth = getAuth(firebaseApp);
-export const firestore = getFirestore();
+const firestore = getFirestore();
 export const signInWithGoogle = () => {
     const provider = new GoogleAuthProvider();
     provider.setCustomParameters({
@@ -30,3 +74,4 @@ export const signInWithGoogle = () => {
         console.log(err)
     })
 };
+export default firestore; 
