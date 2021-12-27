@@ -31,14 +31,16 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     if (!snapshot.exists()) {
         const {displayName, email} = userAuth;
         const createdAt = new Date();
-        const collectionRef = doc(firestore, 'users', `${userAuth.uid}`)
-        const payload = {displayName, email, createdAt};
+        const docRef = doc(firestore, 'users', `${userAuth.uid}`)
+        const payload = {displayName, email, createdAt, ...additionalData};
         try {
-            await setDoc(collectionRef, payload);
+            await setDoc(docRef, payload);
             // console.log(`New Document with ${docRef.id} successfully added` )
         } catch (error) {
             console.log(`error adding user: ${error}`)
         }
+
+        return docRef;
     }
 
     // return userRef;
