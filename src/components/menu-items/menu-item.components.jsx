@@ -2,6 +2,7 @@ import React from 'react';
 import './menu-item.styles.scss';
 import { useNavigate } from 'react-router-dom';
 
+
 const MenuItems = ({title, imageUrl, size}) => {
     let navigate = useNavigate();
     return(
@@ -14,11 +15,7 @@ const MenuItems = ({title, imageUrl, size}) => {
                 <div className = 'subtitle'>
                     <span>SHOP NOW</span>
                 </div>
-                            
-                
-
             </div>
-
         </div>
 
     )
