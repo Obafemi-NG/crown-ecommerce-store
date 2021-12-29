@@ -9,6 +9,10 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { createUserProfileDocument } from './firebase/firebase.utils';
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.action';
+import { Navigate } from 'react-router-dom';
+
+
+
 
 
 
@@ -16,6 +20,7 @@ import './App.css';
 import { onSnapshot } from 'firebase/firestore';
 
 class App extends React.Component {
+  
   unsubscribe = null;
 
   componentDidMount() {
@@ -54,7 +59,8 @@ class App extends React.Component {
         <Routes>
           <Route path = '/' element =     {<HomePage/>} />
           <Route path = '/shop' element = {<Shop/>} />
-          <Route path = '/sign-in' element = {<SignInAndSignUp/>} />
+          {/* <Route path = '/sign-in' element = {this.props.currentUser ? <Navigate replace to ='/' /> : <SignInAndSignUp/>} /> */}
+          <Route path = '*' element = {this.props.currentUser ? <Navigate replace to ='/' /> : <SignInAndSignUp/>} />
       </Routes>
       </React.Fragment>
       
@@ -64,8 +70,12 @@ class App extends React.Component {
   
 }
 
+const mapStateToProps = ({user}) => ({
+  currentUser : user.currentUser
+})
+
 const mapDispatchToProps = dispatch => ({
   setCurrentUser : user => dispatch(setCurrentUser(user))
 })
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
