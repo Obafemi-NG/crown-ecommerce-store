@@ -18,6 +18,7 @@ import { Navigate } from 'react-router-dom';
 
 import './App.css';
 import { onSnapshot } from 'firebase/firestore';
+import Checkout from './pages/checkout/checkout.component';
 
 class App extends React.Component {
   
@@ -60,6 +61,7 @@ class App extends React.Component {
           <Route path = '/' element =     {<HomePage/>} />
           <Route path = '/shop' element = {<Shop/>} />
           {/* <Route path = '/sign-in' element = {this.props.currentUser ? <Navigate replace to ='/' /> : <SignInAndSignUp/>} /> */}
+          <Route path = '/checkout' element ={<Checkout />} />
           <Route path = '*' element = {this.props.currentUser ? <Navigate replace to ='/' /> : <SignInAndSignUp/>} />
       </Routes>
       </React.Fragment>
