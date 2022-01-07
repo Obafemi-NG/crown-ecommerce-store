@@ -25,10 +25,16 @@ const InvertedStyles = css`
     background-color: white;
     color: black;
     border: 1px solid black;
-
+    width: 50%;
+    opacity: 0.4;
+    position: absolute;
+    top: 255px;
+    /* display: none; */
     &:hover {
-    background-color: black;
-    color: white;
+        /* display : flex; */
+        background-color: black;
+        color: white;
+        opacity: 0.85;
     }
 `
 
