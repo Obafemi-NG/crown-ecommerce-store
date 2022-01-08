@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
-import {getFirestore, getDoc, doc, setDoc } from 'firebase/firestore';
+import {getFirestore, getDoc, doc, setDoc} from 'firebase/firestore';
 import {getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
+// import { selectCollectionsForPreview } from '../redux/shop/shop.selector';
 
 const config = {
     apiKey: "AIzaSyAzWi15RA1SYyKon6oDf19SUx61sl8eEZk",
@@ -62,6 +63,38 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     //     }
     // }
 }
+
+//(...STARTING)FIREBASE CODE FOR STORING SHOPDATA ON FIRESTORE
+
+// export const addCollectionAndDocument = async (collectionKey, objectToAdd) => {
+//     const collectionRef = doc(firestore, collectionKey);
+//     const collectionSnapshot = await getDoc(collectionRef);
+//     if(!collectionSnapshot.exist()){
+//         const batch = writeBatch(firestore);
+//         objectToAdd.forEach(obj => {
+//             const newDocRef = doc(collectionRef) 
+//             batch.set(newDocRef, obj)}
+//         );
+//         await batch.commit();
+//     }
+
+// }
+
+// export const convertCollectionsToMap = (collections) => {
+//     const tranformedCollection = collections.docs.map(doc => {
+//         const {title, items} = doc.data();
+//         return({
+//             routeName : encodeURI(title.toLowerCase()),
+//             id : doc.id,
+//             title,
+//             items,
+//         });
+//     });
+//     console.log(tranformedCollection);
+// }
+
+//(...ENDING)FIREBASE CODE FOR STORING SHOPDATA ON FIRESTORE
+
 export const auth = getAuth(firebaseApp);
 const firestore = getFirestore();
 export const signInWithGoogle = () => {

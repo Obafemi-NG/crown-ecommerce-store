@@ -31,14 +31,13 @@ import CollectionItem from '../../components/collectionitem/collectionitem.compo
 
 const CollectionPage = () => {
     const id = useParams();
-    console.log(id.collectionId);
+    // console.log(id.collectionId);
     const collection = useSelector(selectCollection(id.collectionId))
-    console.log(collection);
+    // console.log(collection);
     const {title, items} = collection;
     return(
         <div className = 'collection-page'>
-            COLLECTION_PAGE
-            <h2>{title}</h2>
+            <h2 className = 'title'>{title}</h2>
             <div className = 'items'>
                 {
                 items.map((item)=> <CollectionItem key = {item.id} item = {item} /> )
