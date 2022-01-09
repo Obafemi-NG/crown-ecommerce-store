@@ -5,9 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 7.5px 15px;
+  margin: 0 5px 15px;
   overflow: hidden;
-
 
   &:hover {
     cursor: pointer;
@@ -25,6 +24,9 @@
 
   &.large {
     height: 380px;
+    @media screen and (max-width : 800px) {
+      height: 200px;    
+    }  
   }
 
   &:first-child {
@@ -43,8 +45,8 @@
   }
 
   .content {
-    height: 90px;
-    padding: 25px;
+    height: 150px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,19 +55,31 @@
     opacity: 0.7;
     position : absolute;
 
+    @media screen and (max-width : 800px) {
+      width: 37%;   
+    }  
+
     .title {
       font-weight: bold;
       margin: 0 6px 0;
       font-size: 22px;
       color: #4a4a4a;
+      
+      @media screen and (max-width : 800px) {
+        font-size: 15px;    
+      }
     }
 
     .subtitle {
       font-weight: lighter;
       font-size: 16px;
-      color: white;
+      color: black;
+      text-align: center;
     }
   }
+  @media screen and (max-width : 800px) {
+    height: 200px;    
+  }  
 }
 
 // .menu-item {
