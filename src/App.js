@@ -18,6 +18,7 @@ import CollectionPage from './pages/collection/collection.component';
 
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/user.selector';
+import  {GlobalStyle} from './global.styles'
 
 class App extends React.Component {
   
@@ -54,6 +55,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <GlobalStyle />
         <Header />
         <Routes>
           <Route path = '/' element =     {<HomePage/>} />

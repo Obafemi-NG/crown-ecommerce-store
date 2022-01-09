@@ -11,10 +11,11 @@ const MenuItems = ({title, imageUrl, size}) => {
             <div className = 'content'>
                 <div className = 'title'>
                     <h1> {title.toUpperCase() } </h1>
+                    <div className = 'subtitle'>
+                        <span>SHOP NOW</span>
+                    </div>                
                 </div>
-                <div className = 'subtitle'>
-                    <span>SHOP NOW</span>
-                </div>
+
             </div>
         </div>
 

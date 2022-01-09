@@ -23,6 +23,7 @@ export const CollectionItemContainer = styled.div`
     align-items: center;
     position: relative;
     padding: 0 5px;
+
 `
 
 export const CollectionImageStyle = styled.div`

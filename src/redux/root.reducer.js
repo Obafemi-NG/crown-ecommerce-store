@@ -10,4 +10,4 @@ export default combineReducers({
     cart : cartReducer,
     directory : directoryReducer,
     shop : shopReducer,
-})
+});
