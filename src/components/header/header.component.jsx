@@ -18,22 +18,22 @@ const Header = ({currentUser, hidden}) => {
         <React.Fragment>
             <HeaderContainer>
                 <LogoContainer to = '/'>
-                <Logo className = 'logo' />
+                    <Logo />
                 </LogoContainer>
-            <OptionsContainer className = 'options'>
-                <OptionLink className = 'option' to = '/shop'>
-                SHOP
-                </OptionLink>
-                <OptionLink className = 'option' to = 'contact'>
-                CONTACT US
-                </OptionLink>
-                {currentUser ? <OptionDiv className = 'option' onClick = { () => signOut(auth)}> SIGN OUT</OptionDiv> : <OptionLink className = 'option' to = '/sign-in'>SIGN IN</OptionLink>}
-                <CartIcon/>
-            </OptionsContainer>
-            {hidden ? null : <CartDropdown/> }
+                <OptionsContainer>
+                    <OptionLink to = '/shop'>
+                        SHOP
+                    </OptionLink>
+                    <OptionLink to = 'contact'>
+                        CONTACT US
+                    </OptionLink>
+                    {currentUser ? <OptionDiv onClick = { () => signOut(auth)}> SIGN OUT</OptionDiv> : <OptionLink to = '/sign-in'>SIGN IN</OptionLink>}
+                    <CartIcon/>
+                </OptionsContainer>
+                {hidden ? null : <CartDropdown/> }
             
-        </HeaderContainer>
-        <Outlet/>
+            </HeaderContainer>
+            <Outlet/>
         </React.Fragment>
 
     )
