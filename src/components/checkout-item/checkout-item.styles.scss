@@ -5,28 +5,63 @@
     border-bottom: 1px solid darkgrey;
     padding: 15px 0;
     font-size: 20px;
-    align-items: center;
+    // align-items: center;
+
+    @media screen and (max-width : 800px) {
+      width: 120%;
+      margin-left: 40px;
+      display: flex;
+    }    
+    
+    
   
     .image-container {
       width: 23%;
       padding-right: 15px;
+
+      @media screen and (max-width : 800px) {
+        width:25%;
+        padding: 10px;
+      }
   
       img {
         width: 100%;
-        height: 100%;
+        height: 100%; 
       }
     }
     .name,
     .quantity,
     .price {
       width: 23%;
+      @media screen and (max-width : 800px) {
+        font-size: 12px;
+        padding-top: 20px;
+        
+      }
+
+    }
+
+    // .name {
+    //   @media screen and (max-width : 800px) {
+
+    //   }
+    // }
+
+    .quantity,
+    .price {
+      @media screen and (max-width : 800px) {
+        padding-left: 10px;
+      }
     }
   
     .quantity {
       display: flex;
+      @media screen and (max-width: 800px) {
+
+      }
       .arrow {
         cursor: pointer;
-      }
+      } 
       .value {
           margin: 0 10px;
       }
@@ -34,7 +69,12 @@
   
     .remove-button {
       padding-left: 12px;
+      padding-top: 15px;
       cursor: pointer;
+
+      @media screen and (max-width : 800px) {
+        padding-left: 3px;
+      }
     }
   }
   
