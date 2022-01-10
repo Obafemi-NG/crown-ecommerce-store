@@ -1,4 +1,5 @@
 import styled, {css} from "styled-components";
+import CustomButton from "../custom-button/custom-button.component";
 
 const priceStyle = css`
     width: 10%;
@@ -24,6 +25,32 @@ export const CollectionItemContainer = styled.div`
     position: relative;
     padding: 0 5px;
 
+    &:hover {
+        .image{
+            opacity: 0.7;
+        }
+        button {
+            opacity: 0.85;
+            display: flex;
+        }
+    
+    }
+
+    @media screen and (max-width : 800px) {
+      width: 40vw;   
+
+      &:hover {
+        .image{
+            opacity: unset;
+        }
+        button {
+            opacity: 0.6;
+            /* display: flex; */
+        }
+    
+    }
+    }  
+
 `
 
 export const CollectionImageStyle = styled.div`
@@ -32,22 +59,22 @@ export const CollectionImageStyle = styled.div`
     background-size: cover;
     background-position: center;
     margin-bottom: 5px;
-    &:hover {
-    opacity: 0.8;
+    
+`
+export const AddButton = styled(CustomButton)`
+    width: 70%;
+    opacity: 0.7;
+    position: absolute;
+    top: 255px;
+    display: none;
+
+    @media screen and (max-width : 800px) {
+        display : block;
+        padding : 0 10px;
+        min-width : unset;
+        opacity: 0.8;
     }
 `
-// export const CollectionButtonStyle = styled.div`
-//     width: 70%;
-//     opacity: 0.7;
-//     position: absolute;
-//     top: 255px;
-//     display: none;
-//     &:hover {
-//         opacity: 0.85;
-//         display: flex;
-//     }
-//     ${CustomButtonContainer}
-// `
 
 
 export const CollectionFooterStyle = styled.div`
@@ -56,5 +83,6 @@ export const CollectionFooterStyle = styled.div`
     display: flex;
     justify-content: space-between;
     font-size: 18px;
+    margin-bottom: 20px;
     ${getFooterDetailStyle}
 `
