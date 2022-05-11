@@ -6,9 +6,9 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     /* padding : 20px 40px; */
 
-        @media (max-width : 800px) {
+        /* @media (max-width : 800px) {
         padding: 8px;
-        }
+        } */
 
     }
     a {

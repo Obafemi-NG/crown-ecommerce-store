@@ -15,9 +15,9 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
-  box-shadow: 1px 4px 5px 2px rgba(212, 212, 212, 0.75);
-  -webkit-box-shadow: 1px 4px 5px 2px rgba(212, 212, 212, 0.75);
-  -moz-box-shadow: 1px 4px 5px 2px rgba(212, 212, 212, 0.75);
+  box-shadow: 0px 2px 7px 2px rgba(212, 212, 212, 0.75);
+  -webkit-box-shadow: 0px 2px 7px 2px rgba(212, 212, 212, 0.75);
+  -moz-box-shadow: 0px 2px 7px 2px rgba(212, 212, 212, 0.75);
 
   @media screen and (max-width: 800px) {
     height: 50px;
@@ -34,8 +34,7 @@ export const LogoContainer = styled(Link)`
   margin-left: 10px;
   padding: 2px;
   @media screen and (max-width: 800px) {
-    width: 10px;
-    height: 10px;
+    height: 100%;
   }
 `;
 
